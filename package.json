@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/jonnatuu/VEOH-ShoppingList2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.8.9",
+    "server": "^1.0.22"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
