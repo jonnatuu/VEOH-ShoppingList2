@@ -1,0 +1,11 @@
+body {
+    background-color: lightgray;
+    background-image: url(../bgimg.jpg);
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: darkslategray;
+}
+

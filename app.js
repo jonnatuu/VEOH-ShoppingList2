@@ -68,6 +68,7 @@ app.get('/login', (req, res, next) => {
     res.write(`
     <html>
     <body>
+    <h1>Shopping list-app</h1>
         <form action="/login" method ="POST">
             <input type="text" name="user_name">
             <button type="submit">Log in</button>
