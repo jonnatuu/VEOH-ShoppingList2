@@ -4,7 +4,7 @@ const body_parser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 
-//Controllers
+//Controllers.
 const auth_controller = require('./controllers/auth_controller');
 const note_controller = require('./controllers/note_controller');
 
