@@ -7,7 +7,7 @@ const login_view = () => {
     </head>
     <body>
  
-        <h1>Shopping-list app</h1>
+        <h1>Shopping-list app by Jonna</h1>
         <form action="/login" method="POST">
             <input type="text" name="user_name">
             <button type="submit">Log in</button>
