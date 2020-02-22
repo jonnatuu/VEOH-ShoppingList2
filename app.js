@@ -3,15 +3,10 @@ const PORT = process.env.PORT || 8080;
 const body_parser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const user_schema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-});
-const user_model = mongoose.model('user', user_schema);
+//Controllers.
+const auth_controller = require('./controllers/auth_controller');
+const note_controller = require('./controllers/note_controller');
 
 let app = express();
 
@@ -20,18 +15,16 @@ app.use(body_parser.urlencoded({
 }));
 
 app.use(session({
-    secret: '1234qwerty', 
+    secret: '1234qwerty',
     resave: true,
     saveUninitialized: true,
-    cookie:{
+    cookie: {
         maxAge: 1000000
     }
 }));
 
-let users = [];
-
 app.use((req, res, next) => {
-    console.log(`path: ${req.path}`);
+    console.log(`${req.method} ${req.path}`);
     next();
 });
 
@@ -42,82 +35,22 @@ const is_logged_handler = (req, res, next) => {
     next();
 };
 
-app.get('/', is_logged_handler, (req, res, next) => {
-    const user = req.session.user;
-    res.write(`
-    <html>
-    <body>
-        Logged in as user: ${user}
-        <form action="/logout" method="POST">
-            <button type="submit">Log out</button>
-        </form>
-    </html>
-    </body>
-    `);
-    res.end();
+//Serve Static files
+app.use('/css', express.static('css'))
 
-});
+//Auth
+app.use(auth_controller.handle_user);
+app.get('/login', auth_controller.get_login);
+app.post('/login', auth_controller.post_login);
+app.post('/register', auth_controller.post_register);
+app.post('/logout', auth_controller.post_logout);
 
-app.post('/logout', (req, res, next) => {
-    req.session.destroy();
-    res.redirect('/login');
-});
 
-app.get('/login', (req, res, next) => {
-    console.log('user:', req.session.user)
-    res.write(`
-    <html>
-    <body>
-    <h1>Shopping list-app</h1>
-        <form action="/login" method ="POST">
-            <input type="text" name="user_name">
-            <button type="submit">Log in</button>
-        </form>
-        <form action="/register" method ="POST">
-        <input type="text" name="user_name">
-        <button type="submit">Register</button>
-        </form>
-    </body>
-    </html>
-    `);
-    res.end();
-});
-
-app.post('/login', (req, res, next) => {
-    const user_name = req.body.user_name;
-    user_model.findOne({
-        name: user_name
-    }).then((user) => {
-        if (user) {
-            req.session.user = user;
-            return res.redirect('/');
-        }
-
-        res.redirect('/login');
-    });
-});
-
-app.post('/register', (req, res, next) => {
-    const user_name = req.body.user_name;
-
-    user_model.findOne({
-        name: user_name
-    }).then((user) => {
-        if (user) {
-            console.log('User name already registered');
-            return res.redirect('/login');
-        }
-
-        let new_user = new user_model({
-            name: user_name
-        });
-
-        new_user.save().then(() => {
-            return res.redirect('/login');
-        });
-
-    });
-});
+//Notes
+app.get('/', is_logged_handler, note_controller.get_notes);
+app.post('/delete-note', is_logged_handler, note_controller.post_delete_note);
+app.get('/note/:id', is_logged_handler, note_controller.get_note);
+app.post('/add-note', is_logged_handler, note_controller.post_note);
 
 app.use((req, res, next) => {
     res.status(404);
@@ -126,18 +59,14 @@ app.use((req, res, next) => {
     `);
 });
 
-// lx1E8P8rRz2BOb6t
+//Shutdown server CTRL + C in terminal
+const mongoose_url = 'mongodb+srv://db-user:lx1E8P8rRz2BOb6t@cluster0-e180q.mongodb.net/test?retryWrites=true&w=majority';
 
-const mongoose_url='mongodb+srv://db-user:lx1E8P8rRz2BOb6t@cluster0-e180q.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(mongoose_url, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 }).then(() => {
     console.log('Mongoose connected');
-    console.log('Start express server');
+    console.log('Start Express server');
     app.listen(PORT);
 });
-
-
-
-
