@@ -6,7 +6,7 @@ const login_view = () => {
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
     <body>
- 
+        <div id="keskiosa">
         <h1>Shopping list app by Jonna</h1>
         <form action="/login" method="POST">
             <input type="text" name="user_name">
@@ -16,6 +16,7 @@ const login_view = () => {
             <input type="text" name="user_name">
             <button type="submit">Register</button>
         </form>
+        </div>
     </body>
     <html>
     `;

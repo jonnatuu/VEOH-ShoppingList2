@@ -1,3 +1,5 @@
+// tietokantayhteys mongoosen käyttäjien osalta
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -6,9 +8,9 @@ const user_schema = new Schema({
         type: String,
         required: true
     },
-    notes: [{
+    shoppinglists: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'note',
+        ref: 'shoppinglist',
         req: true
     }]
 });

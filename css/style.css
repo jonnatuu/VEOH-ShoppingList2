@@ -2,6 +2,7 @@ body {
     background-color: lightgray;
     background-image: url(../bgimg.jpg);
     background-repeat: no-repeat;
+    font-family: verdana;
 }
 
 h1 {
@@ -9,3 +10,28 @@ h1 {
     color: darkslategray;
 }
 
+button {
+    font-family: verdana;
+}
+
+#keskiosa {
+    background-image: url("../bgimg.jpg");
+    text-align: center;
+    padding-top: 30px;
+}
+#keskiosa .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#keskiosa .column {
+    width: 300px;
+    margin: 0 10px;
+    background-color: rgba(49,49,49, 0.5);
+}
+#keskiosa .column img {
+    width: 100%;
+}
+#keskiosa .column p {
+    padding: 5px 10px;
+}
