@@ -2,11 +2,12 @@ body {
     background-color: lightgray;
     background-repeat: no-repeat;
     font-family: verdana;
+    color: rgb(236, 188, 188);
 }
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: rgb(75, 73, 73);
+    color: rgb(201, 192, 192);
 }
 
 button {
@@ -18,11 +19,20 @@ button {
 #keskiosa {
     text-align: center;
     background-color: rgba(49,49,49, 0.5);
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.6) 100%), url(pic.jpg);
     position: fixed;
     top: 20%;
     left: 50%;
     margin-top: -50px;
     margin-left: -150px;
     padding: 10 10 10 10;
-    border-style: dotted;
+    border-style: solid;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: rgb(206, 99, 27);
 }

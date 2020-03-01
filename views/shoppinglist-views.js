@@ -64,7 +64,8 @@ const shoppinglist_view = ((data) => {
     Ostoksen nimi: <input type="txt" name="product_name"><br>
     Tuotteen kuva: <input type="text" name="product_image_url"><br>
     Määrä: <input type="number" name="product_quantity"><br><br>
-    <button type="submit">Lisää tuote</button>
+    <button type="submit">Lisää tuote</button><br><br>
+
     </form>
     </div>
     </body>
