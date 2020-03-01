@@ -16,6 +16,7 @@ const login_view = () => {
             <input type="text" name="user_name">
             <button type="submit">Register</button>
         </form>
+        <img src="css/pic.jpg" class="logo" alt="mypic" width="300"></img>
         </div>
     </body>
     <html>

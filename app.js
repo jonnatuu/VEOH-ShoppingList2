@@ -61,7 +61,10 @@ app.use((req, res, next) => {
     `);
 });
 
-//Shutdown server CTRL + C in terminal
+app.get("pic.jpg", (req, res) => {
+    res.sendFile(path.join(__dirname, "css/pic.jpg"));
+  });
+
 const mongoose_url = 'mongodb+srv://db-user:lx1E8P8rRz2BOb6t@cluster0-e180q.mongodb.net/test?retryWrites=true&w=majority';
 
 mongoose.connect(mongoose_url, {

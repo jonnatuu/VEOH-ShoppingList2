@@ -7,15 +7,15 @@ const shoppinglists_view = ((data) => {
     </head>
     <body>
     <div id="keskiosa">
-        Logged in as user: ${data.user_name} <br><br>
+        Kirjautunut käyttäjänä: ${data.user_name} <br><br>
         <form action="/logout" method="POST">
-            <button type="submit">Log out</button>
+            <button type="submit">Kirjaudu ulos</button>
         </form>`;
 
 
     data.shoppinglists.forEach((shoppinglist) => {
         html += `
-            <a href="/shoppinglist/${shoppinglist._id}">${shoppinglist.name}</a>
+            <a href="/shoppinglist/${shoppinglist._id}">${shoppinglist.name}</a><br><br>
             <form action="delete-shoppinglist" method="POST">
                 <input type="hidden" name="shoppinglist_id" value="${shoppinglist._id}">
                 <button type="submit">Poista ostoslista</button>
@@ -28,6 +28,8 @@ const shoppinglists_view = ((data) => {
             <input type="text" name="shoppinglist">
             <button type="submit">Lisää ostoslista</button>
         </form>
+    <br><br>
+    <img src="css/pic.jpg" class="logo" alt="mypic" width="300"></img>
     </div>
     </body>
     </html>

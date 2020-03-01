@@ -1,37 +1,28 @@
 body {
     background-color: lightgray;
-    background-image: url(../bgimg.jpg);
     background-repeat: no-repeat;
     font-family: verdana;
 }
 
 h1 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: darkslategray;
+    color: rgb(75, 73, 73);
 }
 
 button {
     font-family: verdana;
+    border: none;
+    background-color: rgb(248, 152, 117); 
 }
 
 #keskiosa {
-    background-image: url("../bgimg.jpg");
     text-align: center;
-    padding-top: 30px;
-}
-#keskiosa .row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#keskiosa .column {
-    width: 300px;
-    margin: 0 10px;
     background-color: rgba(49,49,49, 0.5);
-}
-#keskiosa .column img {
-    width: 100%;
-}
-#keskiosa .column p {
-    padding: 5px 10px;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+    padding: 10 10 10 10;
+    border-style: dotted;
 }

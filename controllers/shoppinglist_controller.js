@@ -3,7 +3,7 @@ const shoppinglist_views = require('../views/shoppinglist-views');
 const product_model = require('../models/product_model')
 
 
-// käyttäjän tekemät shoppinglist
+// käyttäjän tekemä shoppinglist
 const get_shoppinglist = (req, res, next) => {
     const shoppinglist_id = req.params.id;
     shoppinglist_model.findOne({
@@ -21,6 +21,7 @@ const get_shoppinglist = (req, res, next) => {
     });
 };
 
+//kaikki shoppinglistit
 const get_shoppinglists = (req, res, next) => {
     const user = req.user;
 
@@ -34,37 +35,9 @@ const get_shoppinglists = (req, res, next) => {
     });
 };
 
-// const get_shoppinglists = (req, res, next) => {
-//     const user = req.user;
-
-//     user.populate('shoppinglists').execPopulate().then(() => {
-//         let data = {
-//             user_name: user.name,
-//             shoppinglists: user.shoppinglists
-//         };
-//         let html = shoppinglist_views.shoppinglists_view(data);
-//         res.send(html);
-//     });
-// };
-
-/*const post_add_shoppinglist = (req,res, next) => {
-    const user = req.user;
-
-    let new_shoppinglist = shoppinglist_model({
-        name: req.body.shoppinglist,
-        products: []
-    });
-
-    new_shoppinglist.save().then(() => {
-        user.shoppinglists.push(new_shoppinglist);
-        user.save().then(() => {
-            return res.direct('/');
-        });
-    });  
-};*/
 
 
-// shoppinglistn poistokomentojuttujuttu
+// shoppinglistn poistokomento
 const post_delete_shoppinglist = (req, res, next) => {
     const user = req.user;
     const shoppinglist_id_to_delete = req.body.shoppinglist_id;
@@ -84,21 +57,8 @@ const post_delete_shoppinglist = (req, res, next) => {
 };
 
 
-/* etsitään shoppinglist?!
-const get_shoppinglist = (req, res, next) => {
-    const shoppinglist_id = req.params.id;
-    shoppinglist_model.findOne({
-        _id: shoppinglist_id
-    }).then((shoppinglist) => {
-        let data = {
-            text: shoppinglist.text
-        };
-        let html = shoppinglist_views.shoppinglist_view(data);
-        res.send(html);
-    });
-}; */
 
-// shoppinglistn tallennus komentojuttunen
+// shoppinglistin tallennus
 const post_shoppinglist = (req, res, next) => {
     const user = req.user;
     let new_shoppinglist = shoppinglist_model({
@@ -136,10 +96,8 @@ const post_add_product = (req, res, next) => {
 };
 
 
-//ja tässä taas nämä constit mitkä yllä määritelty. get/post-settiä?
 module.exports.get_shoppinglists = get_shoppinglists;
 module.exports.get_shoppinglist = get_shoppinglist;
 module.exports.post_shoppinglist = post_shoppinglist;
 module.exports.post_delete_shoppinglist = post_delete_shoppinglist;
 module.exports.post_add_product = post_add_product;
-// module.exports.post_add_shoppinglist = post_add_shoppinglist;
