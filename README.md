@@ -1,5 +1,5 @@
 # VEOH-ShoppingList2
 
-Projektityö käyttäen node.js. //KESKEN!
+Ostoslistasovellus käyttäen node.js.
 
-http://jonnan-shoppinglist-app.herokuapp.com/
+https://jonna-shoppinglistapp.herokuapp.com/login
